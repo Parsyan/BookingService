@@ -1,9 +1,7 @@
 package com.shop.BookingService.db.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -15,17 +13,23 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-public class Company {
+public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
-    private String about;
+    private int price;
 
-    private String workTime;
+    private boolean reserved;
+
+    private String work_time;
 
     @CreatedDate
     private LocalDateTime created_date;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

@@ -5,8 +5,9 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -32,12 +33,15 @@ public class Person {
     @Enumerated(value = EnumType.STRING)
     private Country country;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDateTime birthdate;
+    @DateTimeFormat(pattern = "yyyy:mm:dd")
+    private Date birthdate;
 
     private String password;
 
     @CreatedDate
     @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private String created_date;
+    private LocalDate created_date;
+
+    @OneToMany(mappedBy = "person")
+    private List<Reservation> reservations;
 }
