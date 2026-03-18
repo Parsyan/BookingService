@@ -19,7 +19,7 @@ jobs:
 
             - name: Print Hello from this workflow branch
               run: |
-                  echo Hello from "${{ github.actor }}"'s CI/CD pipeline
+                  echo Hello from "${{ github.actor }}"s CI/CD pipeline
 
             - name: Print current date and time
               run: date
