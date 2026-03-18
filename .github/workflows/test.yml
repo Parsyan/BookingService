@@ -1,0 +1,25 @@
+
+name: CI Assignment - Gor
+
+on:
+    push:
+        branches:
+            - "main"
+    pull_request:
+        branches:
+            - "main"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Print Hello from this workflow branch
+              run: |
+                  echo Hello from "${{ github.actor }}"'s CI/CD pipeline
+            - name: Print current date and time
+              run: date
